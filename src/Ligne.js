@@ -14,9 +14,6 @@ class Ligne extends React.Component {
     this.props.onLineChange(event.target.value, this.props.index);
   }
 
-  handleClick = (event) => {
-    this.props.onDelete(this.props.index); 
-  }
 
   render() {
     return (
@@ -24,9 +21,9 @@ class Ligne extends React.Component {
         <input
           type="text"
           value={this.props.value}
-          onChange={this.handleChange}
+          onChange={this.props.onLineChange}
         />
-        <input type="button" value="x" onClick={this.handleClick} />
+        <input type="button" value="x" onClick={this.props.onDelete} />
       </div>
     );
   }

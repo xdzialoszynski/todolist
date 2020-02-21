@@ -8,20 +8,20 @@ class App extends React.Component {
     this.state = {  lines: [""] };    
   }
 
-  handleLineChange = (value, index) =>  {
-    let lines = [...this.state.lines];  
-    lines[index] = value;
+  handleLineChange = (event, index) =>  {
+    console.log(event.target.value);
+    let lines = [...this.state.lines];    
+    lines[index] = event.target.value;
     this.setState({ lines: lines });
   }
 
   handleLire = (lignes) => {
     let tempLines = [...lignes];
     let tab = tempLines.map((x, index) => (
-      <Ligne
-        index={index}
+      <Ligne        
         value={x}
-        onDelete={this.handleDeleteLine}
-        onLineChange={this.handleLineChange}
+        onDelete={() => this.handleDeleteLine(index)}
+        onLineChange={(event) => this.handleLineChange(event, index)}
       />
     ));
     return tab;
