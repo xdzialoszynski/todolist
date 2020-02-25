@@ -1,4 +1,7 @@
 import React from "react";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 class Ligne extends React.Component {
   constructor(props) {
     super(props);    
@@ -17,13 +20,13 @@ class Ligne extends React.Component {
 
   render() {
     return (
-      <div>
-        <input
-          type="text"
-          value={this.props.value}
-          onChange={this.props.onLineChange}
-        />
-        <input type="button" value="x" onClick={this.props.onDelete} />
+      <div>        
+        <TextField onChange={this.props.onLineChange}>
+          {this.props.value}
+        </TextField>
+        <Button color="primary" variant="outlined" size="small" onClick={this.props.onDelete}>
+          X
+        </Button>
       </div>
     );
   }

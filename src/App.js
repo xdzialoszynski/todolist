@@ -1,5 +1,6 @@
 import React from "react";
 import Ligne from "./Ligne";
+import Button from '@material-ui/core/Button';
 import "./styles.css";
 
 class App extends React.Component {
@@ -9,7 +10,7 @@ class App extends React.Component {
   }
 
   handleLineChange = (event, index) =>  {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     let lines = [...this.state.lines];    
     lines[index] = event.target.value;
     this.setState({ lines: lines });
@@ -42,15 +43,13 @@ class App extends React.Component {
 
   render() {
     let lines = this.handleLire(this.state.lines);
-    console.log(this.state.lines);
+    //console.log(this.state.lines);
     return (
       <fieldset>
         <legend>todo list</legend>
-        <input
-          type="button"
-          value="ajouter une ligne"
-          onClick={this.handleAjouterLigne}
-        />
+        <Button variant="outlined" color="primary" onClick={this.handleAjouterLigne}>
+          ajouter une ligne
+        </Button>       
         {lines}
       </fieldset>
     );
