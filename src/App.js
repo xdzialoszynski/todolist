@@ -19,7 +19,8 @@ class App extends React.Component {
   handleLire = (lignes) => {
     let tempLines = [...lignes];
     let tab = tempLines.map((x, index) => (
-      <Ligne        
+      <Ligne
+        key={index}
         value={x}
         onDelete={() => this.handleDeleteLine(index)}
         onLineChange={(event) => this.handleLineChange(event, index)}

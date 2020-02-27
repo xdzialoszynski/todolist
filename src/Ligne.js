@@ -16,9 +16,7 @@ function Ligne (props) {
   
     return (
       <div>        
-        <TextField onChange={props.onLineChange}>
-          {props.value}
-        </TextField>
+        <TextField value={props.value} onChange={props.onLineChange} />                  
         <Button color="primary" variant="outlined" size="small" onClick={props.onDelete}>
           X
         </Button>
