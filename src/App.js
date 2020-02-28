@@ -10,7 +10,7 @@ class App extends React.Component {
   }
 
   handleLineChange = (event, index) =>  {
-    console.log(event.target.value);
+    console.log(event.target.value );
     let lines = [...this.state.lines];    
     lines[index] = event.target.value;
     this.setState({ lines: lines });
