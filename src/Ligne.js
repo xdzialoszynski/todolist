@@ -7,16 +7,16 @@ function Ligne (props) {
   const handleChange = (event) => {
     console.log(
       "inside handlechange:value:" +
-        event.target.value +
-        "index:" +
-        props.index
-    );
+        event.target.value   );
     props.onLineChange(event.target.value, props.index);
   }
-  
-    return (
-      <div>        
-        <TextField value={props.value} onChange={props.onLineChange} />                  
+
+      return (
+      <div>    
+        <br/>    
+        <Button value="titi" onClick={props.onClickLine} variant="outlined" >
+         {props.value}
+        </Button>
         <Button color="primary" variant="outlined" size="small" onClick={props.onDelete}>
           X
         </Button>
