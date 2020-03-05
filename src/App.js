@@ -6,6 +6,7 @@ import "./styles.css";
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {  lines: [{valeur:'premier item', style:{textDecoration:'none'}} ] };    
   }
 
@@ -13,6 +14,7 @@ class App extends React.Component {
     let lines = [...this.state.lines];
     lines.unshift({valeur:value, style:{textDecoration:'none'}});
     this.setState({ lines: lines });      
+
   }
 
   handleClickLine = (index) => {       

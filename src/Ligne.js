@@ -9,6 +9,7 @@ function Ligne (props) {
       <div>    
         <br/>    
         <Button value="titi" style={props.style} onClick={props.onClickLine} variant="outlined" >
+
          {props.value}
         </Button>
         <Button color="primary" variant="outlined" size="small" onClick={props.onDelete}>
