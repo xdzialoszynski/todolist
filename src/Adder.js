@@ -17,7 +17,9 @@ const handleClick = () => {
   setInputVal("");
 ;
 }
+
   return(
+
 <div>
         <TextField name="lineName" value={inputVal} onChange={handleChange} />                  
         <Button color="primary" variant="outlined" size="small" onClick={handleClick}>
