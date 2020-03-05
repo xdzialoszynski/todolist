@@ -1,56 +1,54 @@
 import React from "react";
 import Ligne from "./Ligne";
-import Button from '@material-ui/core/Button';
+import Adder from "./Adder";
 import "./styles.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {  lines: [""] };    
+    this.state = {  lines: [{valeur:'premier item', style:{textDecoration:'none'}} ] };    
   }
 
-  handleLineChange = (event, index) =>  {
-    console.log(event.target.value);
-    let lines = [...this.state.lines];    
-    lines[index] = event.target.value;
-    this.setState({ lines: lines });
+  handleClickAddButton = (value) => {    
+    let lines = [...this.state.lines];
+    lines.unshift({valeur:value, style:{textDecoration:'none'}});
+    this.setState({ lines: lines });      
   }
 
-  handleLire = (lignes) => {
+  handleClickLine = (index) => {       
+    let lines = [...this.state.lines];
+    let currentStyle = lines[index].style;
+    let newStyle = currentStyle.textDecoration==='none'?{textDecoration:'line-through'}:{textDecoration:'none'};
+    lines[index].style = newStyle;     
+    this.setState({lines:lines});      
+  };
+
+   handleLire = (lignes) => {
     let tempLines = [...lignes];
     let tab = tempLines.map((x, index) => (
       <Ligne
         key={index}
-        value={x}
-        onDelete={() => this.handleDeleteLine(index)}
-        onLineChange={(event) => this.handleLineChange(event, index)}
+        value={x.valeur}
+        onDelete={() => this.handleDeleteLine(index)}        
+        onClickLine = {(event) => this.handleClickLine (index)}
+        style= {x.style}
       />
     ));
     return tab;
   }
 
-  handleDeleteLine = (index) => {
-    console.log(index);
+  handleDeleteLine = (index) => {    
     let lines = [...this.state.lines];
     lines.splice(index, 1);
     this.setState({ lines: lines });
   }
 
-  handleAjouterLigne = () => {
-    let lines = [...this.state.lines];
-    lines.unshift("");
-    this.setState({ lines: lines });
-  }
-
   render() {
-    let lines = this.handleLire(this.state.lines);
-    //console.log(this.state.lines);
+    let lines = this.handleLire(this.state.lines);    
     return (
       <fieldset>
-        <legend>todo list</legend>
-        <Button variant="outlined" color="primary" onClick={this.handleAjouterLigne}>
-          ajouter une ligne
-        </Button>       
+        <legend>todo list v2</legend>
+        <Adder onClick={this.handleClickAddButton}/>            
         {lines}
       </fieldset>
     );
